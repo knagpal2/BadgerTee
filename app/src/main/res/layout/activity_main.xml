@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="127dp"
-        android:text="Login"
+        android:text="Welcome"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,4 +43,22 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/editTextText"
         app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+    <Button
+        android:id="@+id/signOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="32dp"
+        android:text="Sign Up"
+        app:layout_constraintEnd_toStartOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        app:layout_constraintBaseline_toBaselineOf="@+id/signOn"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
