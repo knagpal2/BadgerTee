@@ -13,6 +13,12 @@
         android:theme="@style/Theme.BadgerTee"
         tools:targetApi="31">
         <activity
+            android:name=".GameSetup"
+            android:exported="false" />
+        <activity
+            android:name=".CourseSetup"
+            android:exported="false" />
+        <activity
             android:name=".RoundEnd"
             android:exported="false" />
         <activity

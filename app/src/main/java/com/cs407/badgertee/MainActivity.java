@@ -31,5 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void navStart(View view){
+
+        Intent intent = new Intent(this, start_page.class);
+        startActivity(intent);
+
+    }
+
 
 }

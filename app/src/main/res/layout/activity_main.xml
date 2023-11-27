@@ -60,6 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:onClick="navStart"
         app:layout_constraintBaseline_toBaselineOf="@+id/signOn"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
