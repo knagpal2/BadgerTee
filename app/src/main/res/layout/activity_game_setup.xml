@@ -83,7 +83,7 @@
         android:layout_width="194dp"
         android:layout_height="149dp"
         android:layout_marginBottom="127dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
@@ -111,11 +111,12 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="85dp"
         android:text="Start!"
+        android:onClick="navRangeFinder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
