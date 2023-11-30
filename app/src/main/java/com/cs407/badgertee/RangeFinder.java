@@ -14,23 +14,18 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Button;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.content.Context;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-
 
 public class RangeFinder extends AppCompatActivity {
 
-    private TextView holeNumber, yardage;
+    private TextView holeNumber, yardage, parText;
     private ImageView imgArrow;
     private Button btnNextHole;
+
     private int currentHole = 1;
 
     private LocationManager locationManager;
@@ -42,15 +37,15 @@ public class RangeFinder extends AppCompatActivity {
 
 
     private Hole[] holes = new Hole[]{
-            new Hole(1, 43.083703, -89.54575), // Replace with actual coordinates
-            new Hole(2, 34.001234, -118.001567),
-            new Hole(3, 34.001234, -118.001567),
-            new Hole(4, 34.001234, -118.001567),
-            new Hole(5, 34.001234, -118.001567),
-            new Hole(6, 34.001234, -118.001567),
-            new Hole(7, 34.001234, -118.001567),
-            new Hole(8, 34.001234, -118.001567),
-            new Hole(9, 34.001234, -118.001567),
+            new Hole(1, 43.083703, -89.54575, 5), // Replace with actual coordinates
+            new Hole(2, 43.082616, -89.544378, 3),
+            new Hole(3, 43.082830, -89.549979, 5),
+            new Hole(4, 43.085268, -89.550965, 4),
+            new Hole(5, 43.086088, -89.549152, 3),
+            new Hole(6, 43.087438, -89.546330, 4),
+            new Hole(7, 43.086564, -89.550796, 4),
+            new Hole(8, 43.087703, -89.549876,3),
+            new Hole(9, 43.087919, -89.544376, 5),
     };
 
     public void startListening(){
@@ -69,6 +64,7 @@ public class RangeFinder extends AppCompatActivity {
         yardage = findViewById(R.id.yardage);
         imgArrow = findViewById(R.id.imgArrow);
         btnNextHole = findViewById(R.id.btnNextHole);
+        parText = findViewById(R.id.parText);
 
 
 
@@ -140,14 +136,15 @@ public class RangeFinder extends AppCompatActivity {
         // Update the hole number
         holeNumber.setText("Hole: " + currentHole);
 
+
         // Calculate bearing
         Hole currentHoleObj = holes[currentHole - 1];
         double userLat = userLocation.getLatitude() ;
         double userLng = userLocation.getLongitude();
         float bearing = calculateBearing(userLat, userLng, currentHoleObj.getLatitude(), currentHoleObj.getLongitude());
 
-        yardage.setText("Distance: " + calculateDistance() + "m");
-
+        parText.setText("Par " + currentHoleObj.getHolePar());
+        yardage.setText("Distance: " + calculateDistance() + " yards");
         imgArrow.setRotation(bearing);
     }
 
@@ -163,11 +160,12 @@ public class RangeFinder extends AppCompatActivity {
         return (float)(Math.toDegrees(Math.atan2(y, x)) + 360) % 360;
     }
 
-    private float calculateDistance() {
+    private int calculateDistance() {
         Location holeLocation = new Location("");
         Hole currentHoleObj = holes[currentHole - 1];
         holeLocation.setLatitude(currentHoleObj.getLatitude());
         holeLocation.setLongitude(currentHoleObj.getLongitude());
-        return userLocation.distanceTo(holeLocation);
+        float distanceInMeters = userLocation.distanceTo(holeLocation);
+        return (int) (distanceInMeters * 1.09361);
     }
 }
