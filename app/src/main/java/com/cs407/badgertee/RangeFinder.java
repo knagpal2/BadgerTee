@@ -1,7 +1,13 @@
 package com.cs407.badgertee;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.view.View;
@@ -14,6 +20,12 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.content.Context;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+
+
 public class RangeFinder extends AppCompatActivity {
 
     private TextView holeNumber, yardage;
@@ -22,10 +34,15 @@ public class RangeFinder extends AppCompatActivity {
     private int currentHole = 1;
 
     private LocationManager locationManager;
+
+    private LocationListener locationListener;
     private Location userLocation;
 
+
+
+
     private Hole[] holes = new Hole[]{
-            new Hole(1, 34.000123, -118.000456), // Replace with actual coordinates
+            new Hole(1, 43.083703, -89.54575), // Replace with actual coordinates
             new Hole(2, 34.001234, -118.001567),
             new Hole(3, 34.001234, -118.001567),
             new Hole(4, 34.001234, -118.001567),
@@ -35,6 +52,13 @@ public class RangeFinder extends AppCompatActivity {
             new Hole(8, 34.001234, -118.001567),
             new Hole(9, 34.001234, -118.001567),
     };
+
+    public void startListening(){
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +70,45 @@ public class RangeFinder extends AppCompatActivity {
         imgArrow = findViewById(R.id.imgArrow);
         btnNextHole = findViewById(R.id.btnNextHole);
 
+
+
         // Setup LocationManager
-/*
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        try {
-         //   locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-        } catch (SecurityException e) {
-            // Handle the exception
+
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                updateLocationInfo(location);
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+                LocationListener.super.onStatusChanged(provider, status, extras);
+            }
+
+            @Override
+            public void onProviderEnabled(@NonNull String provider) {
+                LocationListener.super.onProviderEnabled(provider);
+            }
+
+            @Override
+            public void onProviderDisabled(@NonNull String provider) {
+                LocationListener.super.onProviderDisabled(provider);
+            }
+        };
+
+        if (Build.VERSION.SDK_INT < 23){
+            startListening();
+        } else {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            } else {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (location != null){
+                    updateLocationInfo(location);
+                }
+            }
         }
 
         btnNextHole.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +120,10 @@ public class RangeFinder extends AppCompatActivity {
 
         updateView();
 
-*/
+
     }
   //  @Override
-    public void onLocationChanged(Location location) {
+    public void updateLocationInfo(Location location) {
         userLocation = location;
         updateView();
     }
@@ -92,7 +148,7 @@ public class RangeFinder extends AppCompatActivity {
 
         yardage.setText("Distance: " + calculateDistance() + "m");
 
-        //imgArrow.setRotation(bearing - userHeading);
+        imgArrow.setRotation(bearing);
     }
 
     private float calculateBearing(double userLat, double userLng, double holeLat, double holeLng) {
@@ -107,7 +163,11 @@ public class RangeFinder extends AppCompatActivity {
         return (float)(Math.toDegrees(Math.atan2(y, x)) + 360) % 360;
     }
 
-    private int calculateDistance() {
-        return 0; // Placeholder
+    private float calculateDistance() {
+        Location holeLocation = new Location("");
+        Hole currentHoleObj = holes[currentHole - 1];
+        holeLocation.setLatitude(currentHoleObj.getLatitude());
+        holeLocation.setLongitude(currentHoleObj.getLongitude());
+        return userLocation.distanceTo(holeLocation);
     }
 }
