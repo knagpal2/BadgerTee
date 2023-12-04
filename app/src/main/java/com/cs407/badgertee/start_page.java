@@ -16,7 +16,7 @@ public class start_page extends AppCompatActivity {
 
     public void navPastScores(View view){
 
-        Intent intent = new Intent(this, pastScore.class);
+        Intent intent = new Intent(this, allPastScores.class);
         startActivity(intent);
 
     }
