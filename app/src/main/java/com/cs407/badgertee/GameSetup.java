@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -25,7 +26,18 @@ public class GameSetup extends AppCompatActivity {
         if (radioGroup.getCheckedRadioButtonId() == -1 || radioGroup3.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "Please select options in both groups", Toast.LENGTH_SHORT).show();
         } else {
+            int selectedPlayerOptionId = radioGroup.getCheckedRadioButtonId();
+            RadioButton selectedPlayerRadioButton = findViewById(selectedPlayerOptionId);
+            String selectedPlayerOption = selectedPlayerRadioButton.getText().toString();
+
+            int selectedGameTypeOptionId = radioGroup3.getCheckedRadioButtonId();
+            RadioButton selectedGameTypeRadioButton = findViewById(selectedGameTypeOptionId);
+            String selectedGameTypeOption = selectedGameTypeRadioButton.getText().toString();
+
+
             Intent intent = new Intent(this, RangeFinder.class);
+            intent.putExtra("selectedPlayerOption", selectedPlayerOption);
+            intent.putExtra("selectedGameTypeOption", selectedGameTypeOption);
             startActivity(intent);
         }
     }

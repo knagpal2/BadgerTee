@@ -6,11 +6,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Button;
@@ -18,6 +21,9 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.content.Context;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class RangeFinder extends AppCompatActivity {
@@ -32,6 +38,9 @@ public class RangeFinder extends AppCompatActivity {
 
     private LocationListener locationListener;
     private Location userLocation;
+
+    private Spinner spinnerItemCount;
+
 
 
 
@@ -59,6 +68,13 @@ public class RangeFinder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_range_finder);
+
+        Intent intent = getIntent();
+        String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
+        String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
+
+        spinnerItemCount = findViewById(R.id.spinnerItemCount);
+        setupItemCountSpinner(selectedPlayerOption);
 
         holeNumber = findViewById(R.id.holeNumber);
         yardage = findViewById(R.id.yardage);
@@ -167,5 +183,22 @@ public class RangeFinder extends AppCompatActivity {
         holeLocation.setLongitude(currentHoleObj.getLongitude());
         float distanceInMeters = userLocation.distanceTo(holeLocation);
         return (int) (distanceInMeters * 1.09361);
+    }
+
+
+    private void setupItemCountSpinner(String selectedPlayerOption) {
+        List<String> itemCountList = new ArrayList<>();
+        int maxItems = Integer.parseInt(selectedPlayerOption);
+        for (int i = 1; i <= maxItems; i++) {
+            itemCountList.add("Player "+ i);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                itemCountList
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerItemCount.setAdapter(adapter);
     }
 }
