@@ -11,8 +11,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ImageView;
@@ -21,9 +23,11 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 
 public class RangeFinder extends AppCompatActivity {
@@ -56,6 +60,9 @@ public class RangeFinder extends AppCompatActivity {
             new Hole(8, 43.087703, -89.549876,3),
             new Hole(9, 43.087919, -89.544376, 5),
     };
+
+    private HashMap<String, ArrayList<Integer>> playerScores = new HashMap<>();
+
 
     public void startListening(){
 
@@ -190,7 +197,9 @@ public class RangeFinder extends AppCompatActivity {
         List<String> itemCountList = new ArrayList<>();
         int maxItems = Integer.parseInt(selectedPlayerOption);
         for (int i = 1; i <= maxItems; i++) {
-            itemCountList.add("Player "+ i);
+            String playerName = "Player " + i;
+            itemCountList.add(playerName);
+            playerScores.put(playerName, new ArrayList<>());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -201,4 +210,32 @@ public class RangeFinder extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerItemCount.setAdapter(adapter);
     }
+
+    public void onScoreSubmit(View view) {
+        String selectedPlayer = spinnerItemCount.getSelectedItem().toString();
+        EditText scoreInput = findViewById(R.id.scoreInput); // Replace with your actual score input field ID
+        int score;
+        try {
+            score = Integer.parseInt(scoreInput.getText().toString());
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Please enter a valid score", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ArrayList<Integer> scores = playerScores.get(selectedPlayer);
+        if (scores != null) {
+            scores.add(score);
+            playerScores.put(selectedPlayer, scores); // Update the score list
+            Toast.makeText(this, "Score recorded!", Toast.LENGTH_SHORT).show();
+            int nextPlayerPosition = spinnerItemCount.getSelectedItemPosition() + 1;
+            if (nextPlayerPosition >= spinnerItemCount.getCount()) {
+                nextPlayerPosition = 0; // Reset to the first player if it's the last player
+            }
+            spinnerItemCount.setSelection(nextPlayerPosition);
+
+        }
+        scoreInput.setText(""); // Clear the input field
+        Log.i("Important", String.valueOf(playerScores));
+    }
+
 }
