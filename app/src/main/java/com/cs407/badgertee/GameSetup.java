@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -19,6 +20,15 @@ public class GameSetup extends AppCompatActivity {
         setContentView(R.layout.activity_game_setup);
         radioGroup = findViewById(R.id.radioGroup);
         radioGroup3 = findViewById(R.id.radioGroup3);
+
+        Button backButton = (Button) findViewById(R.id.backButtonGameType);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backToCourseSelect = new Intent(GameSetup.this, CourseSetup.class);
+                startActivity(backToCourseSelect);
+            }
+        });
     }
 
     public void navRangeFinder(View view){
