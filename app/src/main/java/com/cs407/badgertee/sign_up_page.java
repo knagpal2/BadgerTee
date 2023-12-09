@@ -70,5 +70,10 @@ public class sign_up_page extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void navToLogin(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 
 }

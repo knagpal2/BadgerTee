@@ -9,20 +9,23 @@ import android.view.View;
 import android.widget.Toast;
 
 public class start_page extends AppCompatActivity {
-
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
         Intent intent = getIntent();
 
-        String str = intent.getStringExtra("message");
+        username = intent.getStringExtra("message");
 
     }
 
     public void navPastScores(View view){
 
+
         Intent intent = new Intent(this, allPastScores.class);
+        intent.putExtra("message", username);
+
         startActivity(intent);
 
     }

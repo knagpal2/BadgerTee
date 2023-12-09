@@ -13,9 +13,9 @@
         android:layout_marginStart="3dp"
         android:layout_marginBottom="56dp"
         android:ems="10"
+        android:hint="Username"
         android:inputType="text"
         android:minHeight="48dp"
-        android:hint="Username"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintStart_toStartOf="@+id/email" />
 
@@ -73,4 +73,15 @@
         android:text="Create Account"
         app:layout_constraintStart_toStartOf="@+id/male"
         app:layout_constraintTop_toBottomOf="@+id/female" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Back to Login"
+        android:onClick="navToLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
