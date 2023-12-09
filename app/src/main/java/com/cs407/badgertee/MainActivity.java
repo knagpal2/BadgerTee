@@ -49,18 +49,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navStart(View view){
-        EditText myTextField = (EditText) findViewById(R.id.editTextText) ;
-        if (myTextField.getText().toString().equals("")){
+        EditText usernameEditText = findViewById(R.id.Username);
+        EditText passwordEditText = findViewById(R.id.Password);
+
+        String username = usernameEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+        if (username.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter a valid username and password", Toast.LENGTH_SHORT).show();
-
         }else{
-            SharedPreferences sharedPreferences = getSharedPreferences("com.cs407.badgertee", Context.MODE_PRIVATE);
-            sharedPreferences.edit().putString("username", myTextField.getText().toString()).apply();
-            goToActivity(myTextField.getText().toString());
+            LogInDB logInDB = new LogInDB(openOrCreateDatabase("users", Context.MODE_PRIVATE, null));
+            boolean isValidLogin = logInDB.checkLogin(username, password);
 
+            if (isValidLogin) {
+                SharedPreferences sharedPreferences = getSharedPreferences("com.cs407.badgertee", Context.MODE_PRIVATE);
+                sharedPreferences.edit().putString("username", username).apply();
 
-            Intent intent = new Intent(this, start_page.class);
-            startActivity(intent);
+                goToActivity(username);
+            } else {
+                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

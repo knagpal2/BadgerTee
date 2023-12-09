@@ -51,7 +51,7 @@ public class DBHelper {
         sqLiteDatabase.execSQL("UPDATE scores set roundScore=?, date=? where courseName=? and username =?",
                 new String[]{roundScore,date,courseName,username});
     }
-    public void deleteNotes(String roundScore, String courseName) {
+    public void deleteScore(String roundScore, String courseName) {
         createTable();
         String date = "";
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT date FROM pastScores WHERE roundScore = ?",
