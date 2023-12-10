@@ -213,7 +213,7 @@ public class RangeFinder extends AppCompatActivity {
 
     public void onScoreSubmit(View view) {
         String selectedPlayer = spinnerItemCount.getSelectedItem().toString();
-        EditText scoreInput = findViewById(R.id.scoreInput); // Replace with your actual score input field ID
+        EditText scoreInput = findViewById(R.id.scoreInput);
         int score;
         try {
             score = Integer.parseInt(scoreInput.getText().toString());
@@ -225,11 +225,11 @@ public class RangeFinder extends AppCompatActivity {
         ArrayList<Integer> scores = playerScores.get(selectedPlayer);
         if (scores != null) {
             scores.add(score);
-            playerScores.put(selectedPlayer, scores); // Update the score list
+            playerScores.put(selectedPlayer, scores);
             Toast.makeText(this, "Score recorded!", Toast.LENGTH_SHORT).show();
             int nextPlayerPosition = spinnerItemCount.getSelectedItemPosition() + 1;
             if (nextPlayerPosition >= spinnerItemCount.getCount()) {
-                nextPlayerPosition = 0; // Reset to the first player if it's the last player
+                nextPlayerPosition = 0;
             }
             spinnerItemCount.setSelection(nextPlayerPosition);
 
