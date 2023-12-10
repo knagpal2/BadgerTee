@@ -47,10 +47,10 @@ public class RangeFinder extends AppCompatActivity {
 
 
 
+    private Hole[] holes;
 
-
-    private Hole[] holes = new Hole[]{
-            new Hole(1, 43.083703, -89.54575, 5), // Replace with actual coordinates
+    private Hole[] holes1 = new Hole[]{
+            new Hole(1, 43.083703, -89.54575, 5),
             new Hole(2, 43.082616, -89.544378, 3),
             new Hole(3, 43.082830, -89.549979, 5),
             new Hole(4, 43.085268, -89.550965, 4),
@@ -59,6 +59,18 @@ public class RangeFinder extends AppCompatActivity {
             new Hole(7, 43.086564, -89.550796, 4),
             new Hole(8, 43.087703, -89.549876,3),
             new Hole(9, 43.087919, -89.544376, 5),
+    };
+
+    private Hole[] holes2 = new Hole[]{
+            new Hole(1, 43.045280, -89.457078, 4),
+            new Hole(2, 43.041349, -89.459690, 5),
+            new Hole(3, 43.042822, -89.464122, 4),
+            new Hole(4, 43.043743, -89.463686, 3),
+            new Hole(5, 43.045425, -89.45955, 4),
+            new Hole(6, 43.043251, -89.462849, 5),
+            new Hole(7, 43.041847, -89.460374, 3),
+            new Hole(8, 43.045067, -89.457650,4),
+            new Hole(9, 43.047745, -89.455760, 4),
     };
 
     private HashMap<String, ArrayList<Integer>> playerScores = new HashMap<>();
@@ -79,6 +91,17 @@ public class RangeFinder extends AppCompatActivity {
         Intent intent = getIntent();
         String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
         String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
+        String selectedCourse = intent.getStringExtra("selectedCourse");
+
+        if ("Pleasant View Golf Course".equals(selectedCourse)) {
+            holes = holes1;
+        } else if ("Odana Hills Golf Course".equals(selectedCourse)) {
+            holes = holes2;
+        } else {
+            // Handle the case where no valid course is selected
+            Log.e("Error", "No valid course selected");
+            // Optionally, return or show an error message
+        }
 
         spinnerItemCount = findViewById(R.id.spinnerItemCount);
         setupItemCountSpinner(selectedPlayerOption);
