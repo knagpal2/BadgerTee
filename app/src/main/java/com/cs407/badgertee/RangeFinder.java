@@ -100,7 +100,6 @@ public class RangeFinder extends AppCompatActivity {
         } else {
             // Handle the case where no valid course is selected
             Log.e("Error", "No valid course selected");
-            // Optionally, return or show an error message
         }
 
         spinnerItemCount = findViewById(R.id.spinnerItemCount);
