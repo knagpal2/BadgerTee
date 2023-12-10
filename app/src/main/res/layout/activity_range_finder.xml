@@ -98,4 +98,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/scoreInput" />
 
+    <Button
+        android:id="@+id/Scorecard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scorecard"
+        tools:layout_editor_absoluteX="24dp"
+        android:onClick="navScorecard"
+        tools:layout_editor_absoluteY="28dp" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -92,6 +92,7 @@ public class RangeFinder extends AppCompatActivity {
         String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
         String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
         String selectedCourse = intent.getStringExtra("selectedCourse");
+        Log.i("INFO", selectedCourse);
 
         if ("Pleasant View Golf Course".equals(selectedCourse)) {
             holes = holes1;
@@ -100,6 +101,22 @@ public class RangeFinder extends AppCompatActivity {
         } else {
             // Handle the case where no valid course is selected
             Log.e("Error", "No valid course selected");
+        }
+
+        try{
+            HashMap<String, ArrayList<Integer>> hold = (HashMap<String, ArrayList<Integer>>) intent.getSerializableExtra("hashMap");
+            int intHold = (int) intent.getSerializableExtra("currentHole");
+            if (hold==null){
+                throw new Exception();
+            }
+            playerScores=hold;
+            currentHole=intHold;
+            Log.i("INFO", playerScores.get("Player 2").toString());
+
+        }catch (Exception e){
+//            spinnerItemCount = findViewById(R.id.spinnerItemCount);
+//            setupItemCountSpinner(selectedPlayerOption);
+
         }
 
         spinnerItemCount = findViewById(R.id.spinnerItemCount);
@@ -230,7 +247,9 @@ public class RangeFinder extends AppCompatActivity {
         for (int i = 1; i <= maxItems; i++) {
             String playerName = "Player " + i;
             itemCountList.add(playerName);
-            playerScores.put(playerName, new ArrayList<>());
+            if (currentHole==1) {
+                playerScores.put(playerName, new ArrayList<>());
+            }
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -241,6 +260,7 @@ public class RangeFinder extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerItemCount.setAdapter(adapter);
     }
+
 
     public void onScoreSubmit(View view) {
         String selectedPlayer = spinnerItemCount.getSelectedItem().toString();
@@ -269,4 +289,19 @@ public class RangeFinder extends AppCompatActivity {
         Log.i("Important", String.valueOf(playerScores));
     }
 
+    public void navScorecard(View view){
+        Intent intent = getIntent();
+        String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
+        String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
+        String selectedCourse = intent.getStringExtra("selectedCourse");
+
+        intent = new Intent(this, Scorecard.class);
+        intent.putExtra("hashMap", playerScores);
+        intent.putExtra("currentHole", currentHole);
+        intent.putExtra("selectedPlayerOption", selectedPlayerOption);
+        intent.putExtra("selectedGameTypeOption", selectedGameTypeOption);
+        intent.putExtra("selectedCourse", selectedCourse);
+
+        startActivity(intent);
+    }
 }
