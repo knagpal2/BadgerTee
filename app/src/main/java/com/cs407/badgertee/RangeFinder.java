@@ -140,6 +140,15 @@ public class RangeFinder extends AppCompatActivity {
         updateView();
 
 
+        Button mapView = (Button) findViewById(R.id.mapButton);
+        mapView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapSelection = new Intent(RangeFinder.this, Map.class);
+                startActivity(mapSelection);
+            }
+        });
+
     }
   //  @Override
     public void updateLocationInfo(Location location) {
