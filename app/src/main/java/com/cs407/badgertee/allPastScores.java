@@ -34,6 +34,7 @@ public class allPastScores extends AppCompatActivity {
         String username = sharedPreferences.getString("username", "");
 
         Context context = getApplicationContext();
+
         SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("pastScores", Context.MODE_PRIVATE, null);
         DBHelper dbHelper = new DBHelper(sqLiteDatabase);
 
@@ -73,7 +74,7 @@ public class allPastScores extends AppCompatActivity {
 
     private void addDummyPastScores(DBHelper dbHelper, String username) {
         dbHelper.saveScore(username, "Lots of Holes", "2023-01-02",
-                "80,3,5,8,4,5,4,3,2,1,4,1,4,5");
+                "80,3,5,8,4,5,4,3,2,1,4,1,4,5", "1");
     }
 
 }

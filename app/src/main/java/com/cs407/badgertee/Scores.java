@@ -6,11 +6,13 @@ public class Scores {
     private String username;
     private String roundScore;
     private String courseName;
-    public Scores(String date, String username, String roundScore, String courseName){
+    private String numPlayers;
+    public Scores(String date, String username, String roundScore, String courseName, String numPlayers){
         this.date = date;
         this.username = username;
         this.roundScore = roundScore;
         this.courseName = courseName;
+        this.numPlayers = numPlayers;
     }
 
     public String getRoundScore() {
@@ -28,4 +30,6 @@ public class Scores {
     public String getUsername() {
         return username;
     }
+
+    public String  getNumPlayers(){return numPlayers;}
 }
