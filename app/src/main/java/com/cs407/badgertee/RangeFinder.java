@@ -144,6 +144,7 @@ public class RangeFinder extends AppCompatActivity {
   //  @Override
     public void updateLocationInfo(Location location) {
         userLocation = location;
+        Log.i("Important", String.valueOf(userLocation));
         updateView();
     }
 
@@ -162,13 +163,21 @@ public class RangeFinder extends AppCompatActivity {
 
         // Calculate bearing
         Hole currentHoleObj = holes[currentHole - 1];
-        double userLat = userLocation.getLatitude() ;
-        double userLng = userLocation.getLongitude();
-        float bearing = calculateBearing(userLat, userLng, currentHoleObj.getLatitude(), currentHoleObj.getLongitude());
+        if(userLocation != null) {
+            double userLat = userLocation.getLatitude();
+            double userLng = userLocation.getLongitude();
+            float bearing = calculateBearing(userLat, userLng, currentHoleObj.getLatitude(), currentHoleObj.getLongitude());
 
-        parText.setText("Par " + currentHoleObj.getHolePar());
-        yardage.setText("Distance: " + calculateDistance() + " yards");
-        imgArrow.setRotation(bearing);
+            parText.setText("Par " + currentHoleObj.getHolePar());
+            yardage.setText("Distance: " + calculateDistance() + " yards");
+            imgArrow.setRotation(bearing);
+        }
+        else{
+            Log.i("Error", "User location is null");
+        }
+
+
+
     }
 
     private float calculateBearing(double userLat, double userLng, double holeLat, double holeLng) {
