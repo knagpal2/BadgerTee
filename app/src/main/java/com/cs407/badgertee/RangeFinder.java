@@ -47,10 +47,10 @@ public class RangeFinder extends AppCompatActivity {
 
 
 
+    private Hole[] holes;
 
-
-    private Hole[] holes = new Hole[]{
-            new Hole(1, 43.083703, -89.54575, 5), // Replace with actual coordinates
+    private Hole[] holes1 = new Hole[]{
+            new Hole(1, 43.083703, -89.54575, 5),
             new Hole(2, 43.082616, -89.544378, 3),
             new Hole(3, 43.082830, -89.549979, 5),
             new Hole(4, 43.085268, -89.550965, 4),
@@ -59,6 +59,18 @@ public class RangeFinder extends AppCompatActivity {
             new Hole(7, 43.086564, -89.550796, 4),
             new Hole(8, 43.087703, -89.549876,3),
             new Hole(9, 43.087919, -89.544376, 5),
+    };
+
+    private Hole[] holes2 = new Hole[]{
+            new Hole(1, 43.045280, -89.457078, 4),
+            new Hole(2, 43.041349, -89.459690, 5),
+            new Hole(3, 43.042822, -89.464122, 4),
+            new Hole(4, 43.043743, -89.463686, 3),
+            new Hole(5, 43.045425, -89.45955, 4),
+            new Hole(6, 43.043251, -89.462849, 5),
+            new Hole(7, 43.041847, -89.460374, 3),
+            new Hole(8, 43.045067, -89.457650,4),
+            new Hole(9, 43.047745, -89.455760, 4),
     };
 
     private HashMap<String, ArrayList<Integer>> playerScores = new HashMap<>();
@@ -79,6 +91,33 @@ public class RangeFinder extends AppCompatActivity {
         Intent intent = getIntent();
         String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
         String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
+        String selectedCourse = intent.getStringExtra("selectedCourse");
+        Log.i("INFO", selectedCourse);
+
+        if ("Pleasant View Golf Course".equals(selectedCourse)) {
+            holes = holes1;
+        } else if ("Odana Hills Golf Course".equals(selectedCourse)) {
+            holes = holes2;
+        } else {
+            // Handle the case where no valid course is selected
+            Log.e("Error", "No valid course selected");
+        }
+
+        try{
+            HashMap<String, ArrayList<Integer>> hold = (HashMap<String, ArrayList<Integer>>) intent.getSerializableExtra("hashMap");
+            int intHold = (int) intent.getSerializableExtra("currentHole");
+            if (hold==null){
+                throw new Exception();
+            }
+            playerScores=hold;
+            currentHole=intHold;
+            Log.i("INFO", playerScores.get("Player 2").toString());
+
+        }catch (Exception e){
+//            spinnerItemCount = findViewById(R.id.spinnerItemCount);
+//            setupItemCountSpinner(selectedPlayerOption);
+
+        }
 
         spinnerItemCount = findViewById(R.id.spinnerItemCount);
         setupItemCountSpinner(selectedPlayerOption);
@@ -217,7 +256,9 @@ public class RangeFinder extends AppCompatActivity {
         for (int i = 1; i <= maxItems; i++) {
             String playerName = "Player " + i;
             itemCountList.add(playerName);
-            playerScores.put(playerName, new ArrayList<>());
+            if (currentHole==1) {
+                playerScores.put(playerName, new ArrayList<>());
+            }
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
@@ -228,6 +269,7 @@ public class RangeFinder extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerItemCount.setAdapter(adapter);
     }
+
 
     public void onScoreSubmit(View view) {
         String selectedPlayer = spinnerItemCount.getSelectedItem().toString();
@@ -256,4 +298,19 @@ public class RangeFinder extends AppCompatActivity {
         Log.i("Important", String.valueOf(playerScores));
     }
 
+    public void navScorecard(View view){
+        Intent intent = getIntent();
+        String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
+        String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
+        String selectedCourse = intent.getStringExtra("selectedCourse");
+
+        intent = new Intent(this, Scorecard.class);
+        intent.putExtra("hashMap", playerScores);
+        intent.putExtra("currentHole", currentHole);
+        intent.putExtra("selectedPlayerOption", selectedPlayerOption);
+        intent.putExtra("selectedGameTypeOption", selectedGameTypeOption);
+        intent.putExtra("selectedCourse", selectedCourse);
+
+        startActivity(intent);
+    }
 }
