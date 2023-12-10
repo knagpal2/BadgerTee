@@ -38,13 +38,20 @@ public class allPastScores extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("pastScores", Context.MODE_PRIVATE, null);
         DBHelper dbHelper = new DBHelper(sqLiteDatabase);
 
+        //addDummyPastScores(dbHelper, username);
+
         ArrayList<Scores> score1 = dbHelper.readScores(username);
         ArrayList<String> displayScores = new ArrayList<>();
         for (Scores score: score1){
             String allScores = score.getRoundScore();
             String[] resultArray = allScores.split(",");
+            String roundScores="";
+            for (int i =0; i<Integer.parseInt(score.getNumPlayers()); i++){
+                int pos= resultArray.length/Integer.parseInt(score.getNumPlayers());
+                roundScores+="Player "+ (i+1) +": "+resultArray[pos*i]+" ";
+            }
 
-            displayScores.add(String.format("Title: %s\nDate: %s\nRound Score: %s\n ", score.getCourseName(), score.getDate(), resultArray[0]));
+            displayScores.add(String.format("Title: %s\nDate: %s\n%s\n ", score.getCourseName(), score.getDate(), roundScores));
         }
 
         Log.i("INFO", displayScores.toString());
@@ -73,8 +80,8 @@ public class allPastScores extends AppCompatActivity {
     }
 
     private void addDummyPastScores(DBHelper dbHelper, String username) {
-        dbHelper.saveScore(username, "Lots of Holes", "2023-01-02",
-                "80,3,5,8,4,5,4,3,2,1,4,1,4,5", "1");
+        dbHelper.saveScore(username, "Multiple Players", "2023-01-02",
+                "80,3,5,8,4,5,4,75,6,5,4,3,2,6,72,6,5,4,3,2,6,82,6,5,4,3,2,6", "4");
     }
 
 }

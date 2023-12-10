@@ -46,10 +46,19 @@ public class pastScore extends AppCompatActivity {
             ArrayList<String> displayScores = new ArrayList<>();
             String allScores = score.getRoundScore();
             String[] resultArray = allScores.split(",");
-            displayScores.add(String.format("Round Score:%s", resultArray[0]));
+            String roundScores="";
+            int pos= resultArray.length/Integer.parseInt(score.getNumPlayers());
+            for (int j =0; j<Integer.parseInt(score.getNumPlayers()); j++){
+                roundScores+="Player "+ (1+j) +": "+resultArray[pos*j]+" ";
+            }
+            displayScores.add(String.format("%s", roundScores));
 
-            for (i=1; i<resultArray.length; i++){
-                displayScores.add(String.format("Hole %d: %s\n", i, resultArray[i]));
+            for (int j=1; j<pos; j++){
+                roundScores="";
+                for (int k =0; k<Integer.parseInt(score.getNumPlayers()); k++){
+                        roundScores+=resultArray[j+k*pos]+"                    ";
+                }
+                displayScores.add(String.format("Hole %d:     %s\n", j, roundScores));
             }
 
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, displayScores);
