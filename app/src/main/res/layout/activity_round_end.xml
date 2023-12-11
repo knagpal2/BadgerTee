@@ -11,24 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="25dp"
         android:text="Congrats"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/winnerScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginBottom="1dp"
-        android:text="Score:"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/returnHome"
@@ -41,396 +30,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TableLayout
-        android:id="@+id/tableLayout2"
-        android:layout_width="386dp"
-        android:layout_height="351dp"
-        android:layout_marginBottom="87dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ListView
+        android:id="@+id/finalScoreListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/winnerScore"
+        android:layout_marginTop="61dp"
+        app:layout_constraintBottom_toTopOf="@id/returnHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/winnerScore">
+        app:layout_constraintTop_toTopOf="@id/winnerScore">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    </ListView>
 
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hole" />
+    <TextView
+        android:id="@+id/winnerScore"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content"
+        android:text="Score:"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="33dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/winnerText" />
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="1" />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="2" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="3" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="4" />
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="5" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="6" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="7" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="8" />
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="9" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Player 1" />
-
-            <TextView
-                android:id="@+id/p1h1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p1h9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Player 2" />
-
-            <TextView
-                android:id="@+id/p2h1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p2h9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:includeFontPadding="true"
-                android:padding="15sp"
-                android:text="0" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Player 3" />
-
-            <TextView
-                android:id="@+id/p3h1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p3h9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Player 4" />
-
-            <TextView
-                android:id="@+id/p4h1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-
-            <TextView
-                android:id="@+id/p4h9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="15sp"
-                android:text="0" />
-        </TableRow>
-    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -47,23 +49,34 @@ public class RoundEnd extends AppCompatActivity {
 
         List<String> playerOrder = Arrays.asList("Player 1", "Player 2", "Player 3", "Player 4");
         String roundScoreString="";
+        ArrayList<String> displayScores = new ArrayList<>();
+
         for (String playerName : playerOrder) {
             int roundScore=0;
             if (playerScores.containsKey(playerName)) {
                 ArrayList<Integer> scores = playerScores.get(playerName);
                 StringBuilder playerScoreString = new StringBuilder();
+                StringBuilder DisplayPlayerScoresString = new StringBuilder(playerName + ": ");
+
                 for (int score : scores) {
                     playerScoreString.append(score).append(",");
                     roundScore+=score;
+                    DisplayPlayerScoresString.append(score).append(", ");
+
                 }
                 if (playerScoreString.length() > 0) {
                     playerScoreString.setLength(playerScoreString.length() - 1);
+                    DisplayPlayerScoresString.setLength(DisplayPlayerScoresString.length() - 2);
+
                 }
+                displayScores.add(DisplayPlayerScoresString.toString());
                 roundScoreString=roundScoreString+roundScore+","+playerScoreString+",";
             }
         }
         roundScoreString.substring(0, roundScoreString.length() - 1);
-
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, displayScores);
+        ListView listView = (ListView) findViewById(R.id.finalScoreListView);
+        listView.setAdapter(adapter);
 
 
         dbHelper.saveScore(username, selectedCourse, formattedDate,
