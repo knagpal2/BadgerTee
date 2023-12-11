@@ -193,6 +193,11 @@ public class RangeFinder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent endRound = new Intent(RangeFinder.this, RoundEnd.class);
+                endRound.putExtra("hashMap", playerScores);
+                endRound.putExtra("currentHole", currentHole);
+                endRound.putExtra("selectedPlayerOption", selectedPlayerOption);
+                endRound.putExtra("selectedGameTypeOption", selectedGameTypeOption);
+                endRound.putExtra("selectedCourse", selectedCourse);
                 startActivity(endRound);
             }
         });

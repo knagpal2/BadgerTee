@@ -51,7 +51,7 @@ public class allPastScores extends AppCompatActivity {
                 roundScores+="Player "+ (i+1) +": "+resultArray[pos*i]+" ";
             }
 
-            displayScores.add(String.format("Title: %s\nDate: %s\n%s\n ", score.getCourseName(), score.getDate(), roundScores));
+            displayScores.add(String.format("Course: %s\nDate: %s\n%s\n ", score.getCourseName(), score.getDate(), roundScores));
         }
 
         Log.i("INFO", displayScores.toString());

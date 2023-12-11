@@ -2,11 +2,19 @@ package com.cs407.badgertee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class RoundEnd extends AppCompatActivity {
 
@@ -14,6 +22,53 @@ public class RoundEnd extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_end);
+
+        Intent intent = getIntent();
+
+        HashMap<String, ArrayList<Integer>> playerScores = (HashMap<String, ArrayList<Integer>>) intent.getSerializableExtra("hashMap");
+        int currentHole = (int) intent.getSerializableExtra("currentHole");
+        String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
+        String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
+        String selectedCourse = intent.getStringExtra("selectedCourse");
+        SharedPreferences sharedPreferences = getSharedPreferences("com.cs407.badgertee", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("username", "");
+
+
+        Context context = getApplicationContext();
+
+        SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("pastScores", Context.MODE_PRIVATE, null);
+        DBHelper dbHelper = new DBHelper(sqLiteDatabase);
+
+        LocalDate currentDate = LocalDate.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+        String formattedDate = currentDate.format(formatter);
+
+        List<String> playerOrder = Arrays.asList("Player 1", "Player 2", "Player 3", "Player 4");
+        String roundScoreString="";
+        for (String playerName : playerOrder) {
+            int roundScore=0;
+            if (playerScores.containsKey(playerName)) {
+                ArrayList<Integer> scores = playerScores.get(playerName);
+                StringBuilder playerScoreString = new StringBuilder();
+                for (int score : scores) {
+                    playerScoreString.append(score).append(",");
+                    roundScore+=score;
+                }
+                if (playerScoreString.length() > 0) {
+                    playerScoreString.setLength(playerScoreString.length() - 1);
+                }
+                roundScoreString=roundScoreString+roundScore+","+playerScoreString+",";
+            }
+        }
+        roundScoreString.substring(0, roundScoreString.length() - 1);
+
+
+
+        dbHelper.saveScore(username, selectedCourse, formattedDate,
+                roundScoreString, selectedPlayerOption);
+
     }
 
     public void navStartPage(View view){
