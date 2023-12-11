@@ -6,11 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".start_page">
 
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/start"
         android:layout_width="158dp"
         android:layout_height="0dp"
         android:layout_marginBottom="372dp"
+        android:backgroundTint="#4CAF50"
         android:onClick="navCourseSetup"
         android:text="Start Round"
         android:textColorHighlight="#4CAF50"
@@ -32,29 +43,18 @@
         app:layout_constraintEnd_toEndOf="@+id/start"
         app:layout_constraintTop_toBottomOf="@+id/start" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="134dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="453dp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/golfpin" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="45dp"
+        android:backgroundTint="#DE0D0D"
         android:onClick="logout"
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/DeleteAccount"
@@ -63,10 +63,13 @@
         android:layout_marginStart="3dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="134dp"
-        android:text="Delete Account"
+        android:backgroundTint="#DE0D0D"
         android:onClick="deleteAccount"
+        android:text="Delete Account"
         app:layout_constraintBottom_toTopOf="@+id/start"
-        app:layout_constraintStart_toStartOf="parent"
 
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

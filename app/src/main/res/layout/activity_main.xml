@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="400dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/golfpin" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -50,8 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="59dp"
         android:layout_marginEnd="32dp"
-        android:text="Sign Up"
         android:onClick="navSignOn"
+        android:text="Sign Up"
         app:layout_constraintEnd_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/Password" />
 
@@ -59,8 +69,10 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
         android:onClick="navStart"
+        android:text="Login"
         app:layout_constraintBaseline_toBaselineOf="@+id/signOn"
         app:layout_constraintEnd_toEndOf="@+id/Password" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
