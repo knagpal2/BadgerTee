@@ -210,6 +210,16 @@ public class RangeFinder extends AppCompatActivity {
         updateView();
     }
 
+    private boolean checkAllScoresSubmitted() {
+        for (ArrayList<Integer> scores : playerScores.values()) {
+            // Check if the size of the scores list is less than currentHole, meaning not all scores are submitted
+            if (scores.size() < currentHole) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void goToNextHole() {
         currentHole++;
         if (currentHole > holes.length) {
@@ -307,6 +317,10 @@ public class RangeFinder extends AppCompatActivity {
             }
             spinnerItemCount.setSelection(nextPlayerPosition);
 
+        }
+
+        if (checkAllScoresSubmitted()) {
+            goToNextHole();
         }
         scoreInput.setText(""); // Clear the input field
         Log.i("Important", String.valueOf(playerScores));
