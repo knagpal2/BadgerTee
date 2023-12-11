@@ -63,4 +63,9 @@ public class DBHelper {
         sqLiteDatabase.execSQL("DELETE FROM pastScores WHERE roundScore = ? AND date = ?", new String[]{roundScore, date});
         cursor.close();
     }
+
+    public void deleteScoresByUsername(String username) {
+        createTable();
+        sqLiteDatabase.execSQL("DELETE FROM pastScores WHERE username = ?", new String[]{username});
+    }
 }

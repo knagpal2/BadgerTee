@@ -49,8 +49,11 @@ public class start_page extends AppCompatActivity {
         String userName = sharedPreferences.getString("username", "");
 
         LogInDB logInDB = new LogInDB(openOrCreateDatabase("users", MODE_PRIVATE, null));
+        DBHelper historyDB = new DBHelper(openOrCreateDatabase("pastScores", MODE_PRIVATE, null));
+
         boolean isUserDeleted = logInDB.deleteUser(userName);
         if (isUserDeleted) {
+            historyDB.deleteScoresByUsername(userName);
             sharedPreferences.edit().clear().apply();
             Toast.makeText(this, "Account deleted successfully", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);

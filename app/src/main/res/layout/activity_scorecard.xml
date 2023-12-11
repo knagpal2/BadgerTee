@@ -22,11 +22,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@id/scorecardTitle"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toTopOf="@id/backToRangeView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/scorecardTitle">
 
     </ListView>
     <Button
