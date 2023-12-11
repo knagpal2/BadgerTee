@@ -294,6 +294,21 @@ public class RangeFinder extends AppCompatActivity {
         spinnerItemCount.setAdapter(adapter);
     }
 
+    private void navigateToEndRound() {
+
+        Intent intent = getIntent();
+        String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
+        String selectedGameTypeOption = intent.getStringExtra("selectedGameTypeOption");
+        String selectedCourse = intent.getStringExtra("selectedCourse");
+
+        Intent endRoundIntent = new Intent(RangeFinder.this, RoundEnd.class);
+        endRoundIntent.putExtra("hashMap", playerScores);
+        endRoundIntent.putExtra("currentHole", currentHole);
+        endRoundIntent.putExtra("selectedPlayerOption", selectedPlayerOption);
+        endRoundIntent.putExtra("selectedGameTypeOption", selectedGameTypeOption);
+        endRoundIntent.putExtra("selectedCourse", selectedCourse);
+        startActivity(endRoundIntent);
+    }
 
     public void onScoreSubmit(View view) {
         String selectedPlayer = spinnerItemCount.getSelectedItem().toString();
@@ -320,7 +335,11 @@ public class RangeFinder extends AppCompatActivity {
         }
 
         if (checkAllScoresSubmitted()) {
-            goToNextHole();
+            if (currentHole == 9) {
+                navigateToEndRound();
+            } else {
+                goToNextHole();
+            }
         }
         scoreInput.setText(""); // Clear the input field
         Log.i("Important", String.valueOf(playerScores));
