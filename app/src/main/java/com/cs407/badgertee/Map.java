@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Map extends AppCompatActivity {
 
-    public final LatLng mDestinationLatLng = new LatLng(43.087755, -89.543044);
+    private final LatLng mDestinationLatLng = new LatLng(43.087755, -89.543044);
     private GoogleMap mMap;
 
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION =12;
@@ -37,7 +37,7 @@ public class Map extends AppCompatActivity {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         float zoom = 2;
 
-        //mapFragment.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDestinationLatLng, zoom));
 
     }
 
