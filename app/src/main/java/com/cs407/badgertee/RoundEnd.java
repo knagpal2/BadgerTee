@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class RoundEnd extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,10 @@ public class RoundEnd extends AppCompatActivity {
     public void navStartPage(View view){
         Intent intent = new Intent(this, start_page.class);
         startActivity(intent);
+    }
+
+    public int winnerScore(ArrayList rounds){
+        return 0;
     }
 
 

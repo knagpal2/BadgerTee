@@ -136,63 +136,63 @@
                 android:text="Player 1" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/p1h1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/p1h2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/p1h3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/p1h4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/p1h5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/p1h6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/p1h7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/p1h8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/p1h9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
@@ -211,7 +211,7 @@
                 android:text="Player 2" />
 
             <TextView
-                android:id="@+id/textView29"
+                android:id="@+id/p2h1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -219,7 +219,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/p2h2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -227,7 +227,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/p2h3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -235,7 +235,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView32"
+                android:id="@+id/p2h4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -243,7 +243,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView33"
+                android:id="@+id/p2h5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -251,7 +251,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/p2h6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -259,7 +259,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView35"
+                android:id="@+id/p2h7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -267,7 +267,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView36"
+                android:id="@+id/p2h8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -275,7 +275,7 @@
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/p2h9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="true"
@@ -295,63 +295,63 @@
                 android:text="Player 3" />
 
             <TextView
-                android:id="@+id/textView38"
+                android:id="@+id/p3h1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/p3h2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView40"
+                android:id="@+id/p3h3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView41"
+                android:id="@+id/p3h4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView42"
+                android:id="@+id/p3h5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView43"
+                android:id="@+id/p3h6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView44"
+                android:id="@+id/p3h7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView45"
+                android:id="@+id/p3h8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView46"
+                android:id="@+id/p3h9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
@@ -369,63 +369,63 @@
                 android:text="Player 4" />
 
             <TextView
-                android:id="@+id/textView47"
+                android:id="@+id/p4h1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView48"
+                android:id="@+id/p4h2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView49"
+                android:id="@+id/p4h3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView50"
+                android:id="@+id/p4h4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView51"
+                android:id="@+id/p4h5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView52"
+                android:id="@+id/p4h6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView53"
+                android:id="@+id/p4h7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView54"
+                android:id="@+id/p4h8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
                 android:text="0" />
 
             <TextView
-                android:id="@+id/textView55"
+                android:id="@+id/p4h9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15sp"
