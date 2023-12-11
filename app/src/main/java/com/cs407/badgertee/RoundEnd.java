@@ -127,8 +127,19 @@ public class RoundEnd extends AppCompatActivity {
         }
 
         TextView winnerTextView = findViewById(R.id.winnerText);
-        winnerTextView.setText("Congratulations, " + winnerName + "!");
 
+        Intent intent = getIntent();
+        String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
+        SharedPreferences sharedPreferences = getSharedPreferences("com.cs407.badgertee", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("username", "");
+
+
+        if (selectedPlayerOption.equals("1")){
+            winnerTextView.setText("Congratulations, " + username + "!");
+        }else{
+            winnerTextView.setText("Congratulations, " + winnerName + "!");
+
+        }
     }
 
     public int findMatchPlayWinnerScore(HashMap<String, ArrayList<Integer>> playerScores) {
@@ -146,7 +157,16 @@ public class RoundEnd extends AppCompatActivity {
         }
 
         TextView winnerScoreTextView = findViewById(R.id.winnerScore);
-        winnerScoreTextView.setText("Winner Holes Won: " + maxHolesWon+"\nWinner Score: "+ winnerScore);
+
+        Intent intent = getIntent();
+        String selectedPlayerOption = intent.getStringExtra("selectedPlayerOption");
+
+        if (selectedPlayerOption.equals("1")){
+            winnerScoreTextView.setText("Score: "+ winnerScore);
+        }else{
+            winnerScoreTextView.setText("Winner Holes Won: " + maxHolesWon+"\nWinner Score: "+ winnerScore);
+
+        }
         return winnerScore;
     }
 
