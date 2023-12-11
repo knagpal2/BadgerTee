@@ -44,6 +44,9 @@
             android:name=".sign_up_page"
             android:exported="false" />
         <activity
+            android:name=".Scorecard"
+            android:exported="false" />
+        <activity
             android:name=".start_page"
             android:exported="false" />
         <activity
