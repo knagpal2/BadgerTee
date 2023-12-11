@@ -102,12 +102,6 @@
             android:text="Match Play"
             android:textSize="20sp" />
 
-        <RadioButton
-            android:id="@+id/radioButton16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Stableford"
-            android:textSize="20sp" />
     </RadioGroup>
 
     <Button
