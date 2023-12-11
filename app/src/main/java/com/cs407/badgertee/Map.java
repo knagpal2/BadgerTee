@@ -10,10 +10,12 @@ import android.os.Bundle;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Map extends AppCompatActivity {
 
@@ -35,7 +37,7 @@ public class Map extends AppCompatActivity {
             displayMyLocation();
         });
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        float zoom = 2;
+        //float zoom = 2;
 
         //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDestinationLatLng, zoom));
 
@@ -53,11 +55,28 @@ public class Map extends AppCompatActivity {
             mFusedLocationProviderClient.getLastLocation()
                     .addOnCompleteListener(this, task -> {
                         Location mLastKnownLocation = task.getResult();
+                        if(mLastKnownLocation != null){
+                            moveCameraToCurrentLocation(new LatLng(43.087755, -89.543044));
+                            double lastLat = mLastKnownLocation.getLatitude();
+                            double lastLong = mLastKnownLocation.getLongitude();
+                            LatLng lastLocation = new LatLng(43.087574, -89.540833);
+                            mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                            mMap.getUiSettings().setZoomControlsEnabled(true);
+                            mMap.addMarker((new MarkerOptions().position(lastLocation).title("Current Location")));
+
+                            //mMap.addMarker(43.087574, -89.540833);
+
+                        }
 
             });
         }
     }
 
+
+    private void moveCameraToCurrentLocation(LatLng latLng){
+        float zoom = 15f;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+    }
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions,
                                            int[] grantResults) {

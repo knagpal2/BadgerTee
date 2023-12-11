@@ -188,6 +188,15 @@ public class RangeFinder extends AppCompatActivity {
             }
         });
 
+        Button endRound = (Button) findViewById(R.id.endRoundButton);
+        endRound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent endRound = new Intent(RangeFinder.this, RoundEnd.class);
+                startActivity(endRound);
+            }
+        });
+
     }
   //  @Override
     public void updateLocationInfo(Location location) {
