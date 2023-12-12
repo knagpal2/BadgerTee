@@ -56,10 +56,10 @@ public class Map extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         Location mLastKnownLocation = task.getResult();
                         if(mLastKnownLocation != null){
-                            moveCameraToCurrentLocation(new LatLng(43.087755, -89.543044));
                             double lastLat = mLastKnownLocation.getLatitude();
                             double lastLong = mLastKnownLocation.getLongitude();
                             LatLng lastLocation = new LatLng(lastLat, lastLong);
+                            moveCameraToCurrentLocation(new LatLng(lastLat, lastLong));
                             mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                             mMap.getUiSettings().setZoomControlsEnabled(true);
                             mMap.addMarker((new MarkerOptions().position(lastLocation).title("Current Location")));
